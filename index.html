@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NEU CSI Vendor Directory</title>
+<!-- Lato: the Northeastern brand web font, so the embed matches sites.northeastern.edu -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #fafafa;
@@ -11,24 +15,45 @@
     --text: #1a1a1a;
     --muted: #5c5c5c;
     --border: #e5e5e5;
-    --accent: #c8102e;
-    --accent-light: #fde8ec;
+    --accent: #d41b2c;          /* Northeastern red */
+    --accent-light: #fbe8ea;
     --chip: #f0f0f0;
-    --chip-active: #c8102e;
+    --chip-active: #d41b2c;
     --chip-active-text: #ffffff;
     --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
     --radius: 10px;
+    /* NEU font stack, mirroring the global-elements design system */
+    --font: "Lato", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+            "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-family: var(--font);
     background: var(--bg);
     color: var(--text);
     line-height: 1.5;
     min-height: 100vh;
   }
+
+  /* ---- Embedded mode ----
+     When the page is loaded inside an <iframe> (i.e. embedded in a WordPress
+     page), JS adds .embedded to <body>. In that mode we drop the standalone
+     page chrome — big title, tagline, footer, background, min-height — so the
+     directory flows as native content inside the host page. Opened directly,
+     none of this applies and the full branded page shows. */
+  body.embedded {
+    background: transparent;
+    min-height: 0;
+  }
+  body.embedded .page { padding: 0.5rem 0 1rem; max-width: none; }
+  body.embedded header { text-align: left; margin-bottom: 1.25rem; }
+  body.embedded header h1,
+  body.embedded header p,
+  body.embedded footer,
+  body.embedded .data-source { display: none; }
+  body.embedded .search-wrap { margin: 0; max-width: 520px; }
 
   .page {
     max-width: 1100px;
@@ -321,6 +346,13 @@
 </style>
 </head>
 <body>
+<script>
+  // If we're rendered inside an iframe (embedded in a WordPress page), switch to
+  // "embedded" styling. Runs before the page paints, so there's no flash of the
+  // standalone title/footer. Wrapped in try/catch for cross-origin safety.
+  try { if (window.self !== window.top) document.body.classList.add("embedded"); }
+  catch (e) { document.body.classList.add("embedded"); }
+</script>
 <div class="page">
   <header>
     <h1>NEU CSI Vendor Directory</h1>
