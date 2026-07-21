@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEU CSI Vendor Directory</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --surface: #ffffff;
+    --text: #1a1a1a;
+    --muted: #5c5c5c;
+    --border: #e5e5e5;
+    --accent: #c8102e;
+    --accent-light: #fde8ec;
+    --chip: #f0f0f0;
+    --chip-active: #c8102e;
+    --chip-active-text: #ffffff;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --radius: 10px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 3rem;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  header h1 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.35rem;
+  }
+
+  header p {
+    color: var(--muted);
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .search-wrap {
+    max-width: 520px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .search-wrap input {
+    width: 100%;
+    padding: 0.85rem 1rem 0.85rem 2.75rem;
+    font-size: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  .search-wrap input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-light);
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    pointer-events: none;
+    font-size: 1rem;
+  }
+
+  .filters {
+    margin: 1.75rem 0 1rem;
+  }
+
+  .sort-section {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .sort-section label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+  }
+
+  .sort-section select {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.875rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+  }
+
+  .filter-group {
+    margin-bottom: 1rem;
+  }
+
+  .filter-group label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .chip {
+    padding: 0.45rem 0.9rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--chip);
+    color: var(--text);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    user-select: none;
+  }
+
+  .chip:hover {
+    border-color: #ccc;
+    background: #e8e8e8;
+  }
+
+  .chip.active {
+    background: var(--chip-active);
+    border-color: var(--chip-active);
+    color: var(--chip-active-text);
+  }
+
+  .chip:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .results-count {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .data-source {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.5rem 0.85rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+
+  .data-source.live {
+    background: #e8f5ee;
+    color: #2d6a4f;
+    border: 1px solid #b7dfca;
+  }
+
+  .data-source.fallback {
+    background: #fdf3e7;
+    color: #8a5a1a;
+    border: 1px solid #f0d9b5;
+  }
+
+  .vendor-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  @media (min-width: 600px) {
+    .vendor-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (min-width: 900px) {
+    .vendor-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .vendor-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .card-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .vendor-card h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .category-badge {
+    flex-shrink: 0;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    background: var(--accent-light);
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+
+  .service-description {
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+
+  .groups-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    margin-bottom: 0.35rem;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    background: #f0f0f0;
+    color: var(--text);
+  }
+
+  .contact-list {
+    list-style: none;
+    font-size: 0.875rem;
+    border-top: 1px solid var(--border);
+    padding-top: 0.75rem;
+    margin-top: auto;
+  }
+
+  .contact-list li {
+    margin-bottom: 0.25rem;
+  }
+
+  .contact-list a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .contact-list a:hover {
+    text-decoration: underline;
+  }
+
+  .contact-list .no-contact {
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--muted);
+    background: var(--surface);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius);
+  }
+
+  .empty-state p {
+    font-size: 1rem;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 2.5rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>NEU CSI Vendor Directory</h1>
+    <p>Approved vendors for student organizations</p>
+    <div class="search-wrap">
+      <span class="search-icon" aria-hidden="true">&#128269;</span>
+      <input type="search" id="search" placeholder="Search by name, service, or group..." autocomplete="off" aria-label="Search vendors">
+    </div>
+  </header>
+
+  <nav class="filters" aria-label="Filter vendors">
+    <div class="sort-section">
+      <label for="sortOrder">Sort By:</label>
+      <select id="sortOrder">
+        <option value="default">Featured / Default</option>
+        <option value="az">Name: A to Z</option>
+        <option value="za">Name: Z to A</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Category</label>
+      <div class="chip-row" id="category-filters" role="group" aria-label="Category filters"></div>
+    </div>
+  </nav>
+
+  <p class="data-source" id="data-source" role="status" aria-live="polite" hidden></p>
+
+  <p class="results-count" id="results-count" aria-live="polite"></p>
+
+  <main class="vendor-grid" id="vendor-grid" aria-label="Vendor listings"></main>
+
+  <footer>
+    Center for Student Involvement &middot; Northeastern University
+  </footer>
+</div>
+
+<template id="vendor-card">
+  <article class="vendor-card">
+    <div class="card-head">
+      <h2 class="vendor-name"></h2>
+      <span class="category-badge"></span>
+    </div>
+    <p class="service-description"></p>
+    <div class="groups-block">
+      <span class="groups-label">Groups Worked With</span>
+      <div class="tag-row groups-tags"></div>
+    </div>
+    <ul class="contact-list"></ul>
+  </article>
+</template>
+
+<script>
+// Dynamic contact-field config. Each field is rendered only when present and
+// non-empty; href/text builders format the value into a proper link.
+const CONTACT_FIELDS = [
+  {
+    key: "email",
+    label: "Email",
+    href: v => `mailto:${v}`,
+    text: v => v,
+    external: false
+  },
+  {
+    key: "phone",
+    label: "Phone",
+    href: v => `tel:${v.replace(/[^\d+]/g, "")}`,
+    text: v => v,
+    external: false
+  },
+  {
+    key: "website",
+    label: "Website",
+    href: v => (/^https?:\/\//i.test(v) ? v : `https://${v}`),
+    text: v => v.replace(/^https?:\/\//i, ""),
+    external: true
+  },
+  {
+    key: "instagram",
+    label: "Instagram",
+    href: v => `https://instagram.com/${v.replace(/^@/, "")}`,
+    text: v => (v.startsWith("@") ? v : `@${v}`),
+    external: true
+  }
+];
+
+let allVendors = [];
+const activeCategories = new Set();
+
+const searchInput = document.getElementById("search");
+const sortDropdown = document.getElementById("sortOrder");
+const categoryFiltersEl = document.getElementById("category-filters");
+const dataSourceEl = document.getElementById("data-source");
+const resultsCountEl = document.getElementById("results-count");
+
+function setDataSource(mode) {
+  dataSourceEl.hidden = false;
+  if (mode === "live") {
+    dataSourceEl.className = "data-source live";
+    dataSourceEl.textContent = "✅ Loaded live from vendors.json (fetched)";
+  } else {
+    dataSourceEl.className = "data-source fallback";
+    dataSourceEl.textContent = "⚠️ Using embedded fallback data (vendors.json was not fetched)";
+  }
+}
+const vendorGridEl = document.getElementById("vendor-grid");
+const cardTemplate = document.getElementById("vendor-card");
+
+// Build category chips from the unique categories present in the data.
+function buildFilterChips() {
+  const categories = [...new Set(allVendors.map(v => v.category).filter(Boolean))].sort();
+  categoryFiltersEl.innerHTML = "";
+  categories.forEach(cat => {
+    categoryFiltersEl.appendChild(createChip(cat));
+  });
+}
+
+function createChip(category) {
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "chip";
+  btn.textContent = category;
+  btn.dataset.value = category;
+  btn.setAttribute("aria-pressed", "false");
+  btn.addEventListener("click", () => {
+    if (activeCategories.has(category)) {
+      activeCategories.delete(category);
+      btn.classList.remove("active");
+      btn.setAttribute("aria-pressed", "false");
+    } else {
+      activeCategories.add(category);
+      btn.classList.add("active");
+      btn.setAttribute("aria-pressed", "true");
+    }
+    applyFilters();
+  });
+  return btn;
+}
+
+function buildContactItem(field, value) {
+  const li = document.createElement("li");
+  const a = document.createElement("a");
+  a.href = field.href(value);
+  a.textContent = field.text(value);
+  if (field.external) {
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+  }
+  li.innerHTML = `<strong>${field.label}:</strong> `;
+  li.appendChild(a);
+  return li;
+}
+
+function renderVendors(vendors) {
+  vendorGridEl.innerHTML = "";
+
+  if (vendors.length === 0) {
+    const empty = document.createElement("div");
+    empty.className = "empty-state";
+    empty.innerHTML = "<p>No vendors match your filters.</p>";
+    vendorGridEl.appendChild(empty);
+    resultsCountEl.textContent = "Showing 0 vendors";
+    return;
+  }
+
+  resultsCountEl.textContent = `Showing ${vendors.length} vendor${vendors.length === 1 ? "" : "s"}`;
+
+  vendors.forEach(vendor => {
+    const card = cardTemplate.content.cloneNode(true);
+
+    card.querySelector(".vendor-name").textContent = vendor.vendorName;
+    card.querySelector(".category-badge").textContent = vendor.category || "";
+
+    card.querySelector(".service-description").textContent = vendor.serviceDescription || "";
+
+    // Groups worked with — render as tag pills, or hide the block if none.
+    const groupsBlock = card.querySelector(".groups-block");
+    const groups = Array.isArray(vendor.groupsWorkedWith) ? vendor.groupsWorkedWith.filter(Boolean) : [];
+    if (groups.length > 0) {
+      const groupsTags = card.querySelector(".groups-tags");
+      groups.forEach(g => {
+        const span = document.createElement("span");
+        span.className = "tag";
+        span.textContent = g;
+        groupsTags.appendChild(span);
+      });
+    } else {
+      groupsBlock.remove();
+    }
+
+    // Dynamic contacts — only render fields that exist and are non-empty.
+    const contactList = card.querySelector(".contact-list");
+    const contact = vendor.contact || {};
+    CONTACT_FIELDS.forEach(field => {
+      const value = contact[field.key];
+      if (typeof value === "string" && value.trim() !== "") {
+        contactList.appendChild(buildContactItem(field, value.trim()));
+      }
+    });
+    if (contactList.children.length === 0) {
+      const li = document.createElement("li");
+      li.className = "no-contact";
+      li.textContent = "No contact details listed";
+      contactList.appendChild(li);
+    }
+
+    vendorGridEl.appendChild(card);
+  });
+}
+
+function filterVendors() {
+  const query = searchInput.value.trim().toLowerCase();
+
+  return allVendors.filter(v => {
+    // Search across vendor name, service description, and groups worked with.
+    if (query) {
+      const groups = Array.isArray(v.groupsWorkedWith) ? v.groupsWorkedWith.join(" ") : "";
+      const haystack = `${v.vendorName || ""} ${v.serviceDescription || ""} ${groups}`.toLowerCase();
+      if (!haystack.includes(query)) return false;
+    }
+    // Category chips use inclusive OR: a vendor matches if its category is one
+    // of the selected categories.
+    if (activeCategories.size > 0) {
+      if (!activeCategories.has(v.category)) return false;
+    }
+    return true;
+  });
+}
+
+function applyFilters() {
+  let filtered = filterVendors();
+  const sortValue = sortDropdown ? sortDropdown.value : "default";
+
+  if (sortValue === "az") {
+    filtered.sort((a, b) => a.vendorName.localeCompare(b.vendorName));
+  } else if (sortValue === "za") {
+    filtered.sort((a, b) => b.vendorName.localeCompare(a.vendorName));
+  }
+
+  renderVendors(filtered);
+}
+
+let searchTimer;
+searchInput.addEventListener("input", () => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(applyFilters, 150);
+});
+
+if (sortDropdown) {
+  sortDropdown.addEventListener("change", applyFilters);
+}
+
+function loadEmbeddedVendors() {
+  const raw = document.getElementById("embedded-vendors-data").textContent;
+  allVendors = JSON.parse(raw);
+  setDataSource("fallback");
+  buildFilterChips();
+  applyFilters();
+}
+
+async function loadVendors() {
+  try {
+    const res = await fetch("vendors.json");
+    if (!res.ok) throw new Error("fetch failed");
+    allVendors = await res.json();
+    setDataSource("live");
+    buildFilterChips();
+    applyFilters();
+  } catch {
+    loadEmbeddedVendors();
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadVendors);
+</script>
+
+<!--
+  Embedded fallback ONLY. This is intentionally DIFFERENT sample data from
+  vendors.json so you can visually confirm which source loaded:
+    - If you see the "Lens & Light", "Husky Catering", etc. vendors  -> live vendors.json was fetched.
+    - If you see the "[FALLBACK]" vendors below                      -> the fetch failed and this embedded copy was used.
+  The real deployment will fetch a dynamic vendors.json generated from an Excel sheet.
+-->
+<script type="application/json" id="embedded-vendors-data">
+[{"id":"fb001","vendorName":"[FALLBACK] Offline Photo Co.","category":"Photographer","serviceDescription":"Placeholder vendor shown only when vendors.json could not be fetched.","groupsWorkedWith":["Fallback Org"],"contact":{"email":"fallback@example.com","phone":"","website":"","instagram":"@fallback_photo"}},{"id":"fb002","vendorName":"[FALLBACK] No-Contact Catering","category":"Food & Catering","serviceDescription":"Placeholder vendor with no contact details, to demo the empty-contact note.","groupsWorkedWith":["Fallback Org"],"contact":{"email":"","phone":"","website":"","instagram":""}},{"id":"fb003","vendorName":"[FALLBACK] Standby Sound DJs","category":"DJ","serviceDescription":"Placeholder vendor shown only when vendors.json could not be fetched.","groupsWorkedWith":["Fallback Org","Test Club"],"contact":{"email":"dj@example.com","phone":"617-000-0000","website":"https://example.com","instagram":"@standby_dj"}}]
+</script>
+</body>
+</html>

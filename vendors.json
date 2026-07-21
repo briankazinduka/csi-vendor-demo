@@ -1,0 +1,158 @@
+[
+  {
+    "id": "v001",
+    "vendorName": "Lens & Light Photography",
+    "category": "Photographer",
+    "serviceDescription": "Event photography, portraits, and organization headshots.",
+    "groupsWorkedWith": ["NASA", "Women in CS", "RSA"],
+    "contact": {
+      "email": "hello@lensandlight.com",
+      "phone": "617-555-0100",
+      "website": "https://lensandlight.com",
+      "instagram": "@lensandlight"
+    }
+  },
+  {
+    "id": "v002",
+    "vendorName": "Campus Motion Films",
+    "category": "Videographer",
+    "serviceDescription": "Event highlight reels and promotional videos for campus organizations.",
+    "groupsWorkedWith": ["SGA", "Entrepreneurs Club", "RSA"],
+    "contact": {
+      "email": "book@campusmotion.com",
+      "phone": "617-555-0201",
+      "website": "https://campusmotion.com",
+      "instagram": "@campusmotion"
+    }
+  },
+  {
+    "id": "v003",
+    "vendorName": "Husky Catering Co.",
+    "category": "Food & Catering",
+    "serviceDescription": "Buffet and plated catering for events of all sizes.",
+    "groupsWorkedWith": ["NASA", "SASA", "Latinx Student Cultural Center"],
+    "contact": {
+      "email": "orders@huskycatering.com",
+      "phone": "617-555-0302",
+      "website": "https://huskycatering.com",
+      "instagram": "@huskycatering"
+    }
+  },
+  {
+    "id": "v004",
+    "vendorName": "Spin City DJs",
+    "category": "DJ",
+    "serviceDescription": "DJ sets and live percussion for parties and formals.",
+    "groupsWorkedWith": ["RSA", "CSSA", "Women in CS"],
+    "contact": {
+      "email": "spin@spincitydj.com",
+      "phone": "617-555-0403",
+      "website": "https://spincitydj.com",
+      "instagram": "@spincitydjs"
+    }
+  },
+  {
+    "id": "v005",
+    "vendorName": "Beantown Beats",
+    "category": "DJ",
+    "serviceDescription": "Full campus event DJ packages with sound and lighting.",
+    "groupsWorkedWith": ["SGA", "Entrepreneurs Club"],
+    "contact": {
+      "email": "info@beantownbeats.com",
+      "phone": "617-555-0504",
+      "website": "https://beantownbeats.com",
+      "instagram": "@beantownbeats"
+    }
+  },
+  {
+    "id": "v006",
+    "vendorName": "Rhythm & Roots Dance",
+    "category": "Performer",
+    "serviceDescription": "Cultural dance showcases and live performance sets.",
+    "groupsWorkedWith": ["SASA", "NASA", "Latinx Student Cultural Center"],
+    "contact": {
+      "email": "booking@rhythmroots.com",
+      "phone": "617-555-0605",
+      "website": "https://rhythmroots.com",
+      "instagram": "@rhythmrootsdance"
+    }
+  },
+  {
+    "id": "v007",
+    "vendorName": "Frame Forward Studio",
+    "category": "Photographer",
+    "serviceDescription": "Photo and short-form video coverage for organization events.",
+    "groupsWorkedWith": ["Women in CS", "RSA"],
+    "contact": {
+      "email": "studio@frameforward.com",
+      "phone": "617-555-0706",
+      "website": "https://frameforward.com",
+      "instagram": "@frameforward"
+    }
+  },
+  {
+    "id": "v008",
+    "vendorName": "Taste of the Commons",
+    "category": "Food & Catering",
+    "serviceDescription": "Plated dinners and staffed catering service.",
+    "groupsWorkedWith": ["SGA", "CSSA"],
+    "contact": {
+      "email": "events@tasteofthecommons.com",
+      "phone": "617-555-0807",
+      "website": "https://tasteofthecommons.com",
+      "instagram": "@tasteofthecommons"
+    }
+  },
+  {
+    "id": "v009",
+    "vendorName": "Neon Night Media",
+    "category": "Videographer",
+    "serviceDescription": "Social media clip packs and event reels.",
+    "groupsWorkedWith": ["Entrepreneurs Club", "RSA", "Women in CS"],
+    "contact": {
+      "email": "hello@neonnightmedia.com",
+      "phone": "617-555-0908",
+      "website": "https://neonnightmedia.com",
+      "instagram": "@neonnightmedia"
+    }
+  },
+  {
+    "id": "v010",
+    "vendorName": "Strings on St. Botolph",
+    "category": "Performer",
+    "serviceDescription": "Acoustic ensemble performances for receptions and ceremonies.",
+    "groupsWorkedWith": ["SGA", "NASA"],
+    "contact": {
+      "email": "book@stringsstbotolph.com",
+      "phone": "617-555-1010",
+      "website": "https://stringsstbotolph.com",
+      "instagram": "@stringsstbotolph"
+    }
+  },
+  {
+    "id": "v011",
+    "vendorName": "Capture NEU",
+    "category": "Photographer",
+    "serviceDescription": "Student-run tabling and event photography coverage.",
+    "groupsWorkedWith": ["CSSA", "Women in CS", "RSA"],
+    "contact": {
+      "email": "captureneu@gmail.com",
+      "phone": "",
+      "website": "",
+      "instagram": "@captureneu"
+    }
+  },
+  {
+    "id": "v012",
+    "vendorName": "The Rolling Kitchen",
+    "category": "Food & Catering",
+    "serviceDescription": "Campus food truck visits with customizable menus.",
+    "groupsWorkedWith": ["NASA", "SASA", "Latinx Student Cultural Center"],
+    "contact": {
+      "email": "book@rollingkitchen.com",
+      "phone": "617-555-1212",
+      "website": "https://rollingkitchen.com",
+      "instagram": "@rollingkitchenbos"
+    }
+  }
+]
