@@ -1,158 +1,132 @@
 [
   {
-    "id": "v001",
-    "vendorName": "Lens & Light Photography",
-    "category": "Photographer",
-    "serviceDescription": "Event photography, portraits, and organization headshots.",
-    "groupsWorkedWith": ["NASA", "Women in CS", "RSA"],
+    "id": "pixel-pine-studio",
+    "vendorName": "Pixel & Pine Studio",
+    "category": "Photographers and Videographers",
+    "serviceDescription": "Event photography and same-day highlight reels for campus orgs.",
+    "groupsWorkedWith": [
+      "Astra Society",
+      "Blue Ridge Improv"
+    ],
     "contact": {
-      "email": "hello@lensandlight.com",
-      "phone": "617-555-0100",
-      "website": "https://lensandlight.com",
-      "instagram": "@lensandlight"
+      "email": "",
+      "phone": "617-555-9812",
+      "website": "",
+      "instagram": "@pixelandpine"
     }
   },
   {
-    "id": "v002",
-    "vendorName": "Campus Motion Films",
-    "category": "Videographer",
-    "serviceDescription": "Event highlight reels and promotional videos for campus organizations.",
-    "groupsWorkedWith": ["SGA", "Entrepreneurs Club", "RSA"],
+    "id": "harbor-light-films",
+    "vendorName": "Harbor Light Films",
+    "category": "Photographers and Videographers",
+    "serviceDescription": "Videography for showcases and formal events.",
+    "groupsWorkedWith": [],
     "contact": {
-      "email": "book@campusmotion.com",
-      "phone": "617-555-0201",
-      "website": "https://campusmotion.com",
-      "instagram": "@campusmotion"
+      "email": "",
+      "phone": "",
+      "website": "https://www.harborlightfilms.com",
+      "instagram": "@harborlightfilms"
     }
   },
   {
-    "id": "v003",
-    "vendorName": "Husky Catering Co.",
-    "category": "Food & Catering",
-    "serviceDescription": "Buffet and plated catering for events of all sizes.",
-    "groupsWorkedWith": ["NASA", "SASA", "Latinx Student Cultural Center"],
+    "id": "quinn-marsh-photo",
+    "vendorName": "quinn marsh photo",
+    "category": "Photographers and Videographers",
+    "serviceDescription": "Portraits, headshots, and small event coverage. Based near campus.",
+    "groupsWorkedWith": [
+      "Founders Collective"
+    ],
     "contact": {
-      "email": "orders@huskycatering.com",
-      "phone": "617-555-0302",
-      "website": "https://huskycatering.com",
-      "instagram": "@huskycatering"
-    }
-  },
-  {
-    "id": "v004",
-    "vendorName": "Spin City DJs",
-    "category": "DJ",
-    "serviceDescription": "DJ sets and live percussion for parties and formals.",
-    "groupsWorkedWith": ["RSA", "CSSA", "Women in CS"],
-    "contact": {
-      "email": "spin@spincitydj.com",
-      "phone": "617-555-0403",
-      "website": "https://spincitydj.com",
-      "instagram": "@spincitydjs"
-    }
-  },
-  {
-    "id": "v005",
-    "vendorName": "Beantown Beats",
-    "category": "DJ",
-    "serviceDescription": "Full campus event DJ packages with sound and lighting.",
-    "groupsWorkedWith": ["SGA", "Entrepreneurs Club"],
-    "contact": {
-      "email": "info@beantownbeats.com",
-      "phone": "617-555-0504",
-      "website": "https://beantownbeats.com",
-      "instagram": "@beantownbeats"
-    }
-  },
-  {
-    "id": "v006",
-    "vendorName": "Rhythm & Roots Dance",
-    "category": "Performer",
-    "serviceDescription": "Cultural dance showcases and live performance sets.",
-    "groupsWorkedWith": ["SASA", "NASA", "Latinx Student Cultural Center"],
-    "contact": {
-      "email": "booking@rhythmroots.com",
-      "phone": "617-555-0605",
-      "website": "https://rhythmroots.com",
-      "instagram": "@rhythmrootsdance"
-    }
-  },
-  {
-    "id": "v007",
-    "vendorName": "Frame Forward Studio",
-    "category": "Photographer",
-    "serviceDescription": "Photo and short-form video coverage for organization events.",
-    "groupsWorkedWith": ["Women in CS", "RSA"],
-    "contact": {
-      "email": "studio@frameforward.com",
-      "phone": "617-555-0706",
-      "website": "https://frameforward.com",
-      "instagram": "@frameforward"
-    }
-  },
-  {
-    "id": "v008",
-    "vendorName": "Taste of the Commons",
-    "category": "Food & Catering",
-    "serviceDescription": "Plated dinners and staffed catering service.",
-    "groupsWorkedWith": ["SGA", "CSSA"],
-    "contact": {
-      "email": "events@tasteofthecommons.com",
-      "phone": "617-555-0807",
-      "website": "https://tasteofthecommons.com",
-      "instagram": "@tasteofthecommons"
-    }
-  },
-  {
-    "id": "v009",
-    "vendorName": "Neon Night Media",
-    "category": "Videographer",
-    "serviceDescription": "Social media clip packs and event reels.",
-    "groupsWorkedWith": ["Entrepreneurs Club", "RSA", "Women in CS"],
-    "contact": {
-      "email": "hello@neonnightmedia.com",
-      "phone": "617-555-0908",
-      "website": "https://neonnightmedia.com",
-      "instagram": "@neonnightmedia"
-    }
-  },
-  {
-    "id": "v010",
-    "vendorName": "Strings on St. Botolph",
-    "category": "Performer",
-    "serviceDescription": "Acoustic ensemble performances for receptions and ceremonies.",
-    "groupsWorkedWith": ["SGA", "NASA"],
-    "contact": {
-      "email": "book@stringsstbotolph.com",
-      "phone": "617-555-1010",
-      "website": "https://stringsstbotolph.com",
-      "instagram": "@stringsstbotolph"
-    }
-  },
-  {
-    "id": "v011",
-    "vendorName": "Capture NEU",
-    "category": "Photographer",
-    "serviceDescription": "Student-run tabling and event photography coverage.",
-    "groupsWorkedWith": ["CSSA", "Women in CS", "RSA"],
-    "contact": {
-      "email": "captureneu@gmail.com",
+      "email": "quinnmarshphoto@gmail.com",
       "phone": "",
       "website": "",
-      "instagram": "@captureneu"
+      "instagram": ""
     }
   },
   {
-    "id": "v012",
-    "vendorName": "The Rolling Kitchen",
-    "category": "Food & Catering",
-    "serviceDescription": "Campus food truck visits with customizable menus.",
-    "groupsWorkedWith": ["NASA", "SASA", "Latinx Student Cultural Center"],
+    "id": "union-hall-event-space",
+    "vendorName": "Union Hall Event Space",
+    "category": "Facilities",
+    "serviceDescription": "Mid-size venue rental for mixers and banquets, includes AV setup.",
+    "groupsWorkedWith": [
+      "Graduate Student Assoc",
+      "Riverside RSA"
+    ],
     "contact": {
-      "email": "book@rollingkitchen.com",
-      "phone": "617-555-1212",
-      "website": "https://rollingkitchen.com",
-      "instagram": "@rollingkitchenbos"
+      "email": "bookings@unionhallevents.com",
+      "phone": "617-555-0142",
+      "website": "https://unionhallevents.com",
+      "instagram": ""
+    }
+  },
+  {
+    "id": "the-birchwood-room",
+    "vendorName": "The Birchwood Room",
+    "category": "Facilities",
+    "serviceDescription": "Private dining room rental, seats up to 80.",
+    "groupsWorkedWith": [],
+    "contact": {
+      "email": "hello.birchwood@outlook.com",
+      "phone": "123-456-7890",
+      "website": "https://birchwoodroom.com",
+      "instagram": ""
+    }
+  },
+  {
+    "id": "loop-dj-collective",
+    "vendorName": "Loop DJ Collective",
+    "category": "Professional Services",
+    "serviceDescription": "DJ services for formals, mixers, and tabling events.",
+    "groupsWorkedWith": [
+      "Entrepreneurs Club",
+      "Founders Collective"
+    ],
+    "contact": {
+      "email": "contact@loopdjcollective.com",
+      "phone": "",
+      "website": "https://loopdjcollective.com",
+      "instagram": "@loopdjcollective"
+    }
+  },
+  {
+    "id": "snapshot-photo-booths",
+    "vendorName": "Snapshot Photo Booths",
+    "category": "Professional Services",
+    "serviceDescription": "Photo booth rental with props and instant prints.",
+    "groupsWorkedWith": [],
+    "contact": {
+      "email": "",
+      "phone": "617-555-0199",
+      "website": "",
+      "instagram": "@snapshotboothsboston"
+    }
+  },
+  {
+    "id": "iris-ink-design",
+    "vendorName": "Iris & Ink Design",
+    "category": "Service Providers",
+    "serviceDescription": "Custom event signage, banners, and printed materials.",
+    "groupsWorkedWith": [
+      "Astra Society"
+    ],
+    "contact": {
+      "email": "orders@irisandink.co",
+      "phone": "617-555-0177",
+      "website": "https://irisandink.co",
+      "instagram": "@irisandink"
+    }
+  },
+  {
+    "id": "northfield-av-rentals",
+    "vendorName": "Northfield AV Rentals",
+    "category": "Service Providers",
+    "serviceDescription": "",
+    "groupsWorkedWith": [],
+    "contact": {
+      "email": "info@northfieldav.com",
+      "phone": "",
+      "website": "",
+      "instagram": ""
     }
   }
 ]
