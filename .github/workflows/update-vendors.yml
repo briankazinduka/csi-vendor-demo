@@ -1,0 +1,38 @@
+name: Update vendor data
+
+# Fired by Power Automate's "Create a repository dispatch event" action
+# (GitHub connector, Standard/non-premium) once the Office Script has
+# cleaned the Excel data. This job does the actual file write + commit,
+# so Power Automate never needs a personal access token.
+on:
+  repository_dispatch:
+    types: [update-vendors]
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Write vendors.json from the dispatch payload
+        run: |
+          python3 -c "
+          import json, os
+          with open(os.environ['GITHUB_EVENT_PATH']) as f:
+              event = json.load(f)
+          vendors = json.loads(event['client_payload']['vendors_json'])
+          with open('vendors.json', 'w') as out:
+              json.dump(vendors, out, indent=2)
+              out.write('\n')
+          "
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add vendors.json
+          git diff --cached --quiet || git commit -m "Update vendor data via Power Automate"
+          git push
