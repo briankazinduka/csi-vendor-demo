@@ -44,21 +44,6 @@
     }
   },
   {
-    "id": "visuals-by-jaiden",
-    "vendorName": "Visuals By Jaiden",
-    "category": "Photographers and Videographers",
-    "serviceDescription": "Beyond portraiture, Nicholson also specializes in documenting pivotal life moments, including university commencements and graduations, capturing the emotion and significance of these milestones with intention.",
-    "groupsWorkedWith": [
-      "BCF"
-    ],
-    "contact": {
-      "email": "",
-      "phone": "",
-      "website": "",
-      "instagram": ""
-    }
-  },
-  {
     "id": "union-hall-event-space",
     "vendorName": "Union Hall Event Space",
     "category": "Facilities",
